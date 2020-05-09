@@ -18,6 +18,10 @@ def select_youngest_bear_and_returns_name_and_age
  "SELECT name,MIN(age) FROM bears";
 end
 
+  it 'selects the most prominent color and returns it with its count' do
+    expect(@db.execute(selects_most_prominent_color_and_returns_with_count)).to eq([["dark brown", 3]])
+  end
+  
 def selects_most_prominent_color_and_returns_with_count
  "SELECT color, COUNT(color) FROM bears GROUP BY color ORDER BY count(*) DESC LIMIT 1";
 end
